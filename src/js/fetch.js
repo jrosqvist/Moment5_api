@@ -3,6 +3,8 @@
 const URL = "http://studenter.miun.se/~joro1803/dt173g/moment5_rest/courselist.php/courses/";
 // Hämtar kurserna när sidan laddas in
 window.onload = getCourses;
+// Händelsehanterare på lägg till-knappen
+document.getElementById("addButton").addEventListener("click", addCourse);
 // Funktion som lägger till en bil från formuläret
 function addCourse() {
     // Hämtar datat från fälten och lägger i variabler
@@ -43,16 +45,17 @@ function getCourses() {
         // Konverterar till JSON
         .then((res) => res.json())
         .then((data) => {
-            let output = "<h3>Lästa kurser</h3>";
+            let output = "<h3>Lästa kurser</h3><table><tr><th>Kurskod</th><th>Kursnamn</th> <th>Progression</th><th>Kursplan</th><th></th></tr>";
             // Loopar igenom datat och skriver ut alla kurser
             data.forEach(function (post) {
-                output += "<div class = 'courseBox'><p>" + post.Code + "</p>"
-                    + "<p>" + post.Name + "</p>"
-                    + "<p>" + post.Progression + "</p>"
-                    + "<p>" + post.Syllabus + "</p>"
+                output += "<tr><td>" + post.Code + "</td>"
+                    + "<td>" + post.Name + "</td>"
+                    + "<td>" + post.Progression + "</td>"
+                    + "<td><a href='" + post.Syllabus + "' target ='_blank'>Webblänk</a></td>"
                     // Lägger till en radera-knapp som får ID:t från kurs-ID:t
-                    + "<button onclick ='deleteCourse(this.id)' id =" + post.ID + ">Radera</button></div>";
+                    + "<td><button onclick ='deleteCourse(this.id)' class = 'deleteButton' id =" + post.ID + ">Radera</button></td></tr>";
             })
+            output += "</table>";
             // Lägger in all text i diven output
             document.getElementById("output").innerHTML = output;
         })
