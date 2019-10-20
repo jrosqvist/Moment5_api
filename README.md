@@ -5,6 +5,6 @@ Datat hämtas, läggs till och raderas med Fetch.
 Inmatat data konverteras till JSON och skickas till webbtjänsten. Då datat hämtas via en loop läggs även en radera-knapp
 till som får ID:t från databasen.
 
-En färdig webbaplikation finns upplagd på http://studenter.miun.se/~joro1803/dt173g/moment5_api/courselist.html
+En färdig webbaplikation finns upplagd på https://studenter.miun.se/~joro1803/dt173g/moment5_api/courselist.html
 
 OBS! För tillfället är tillfredsställande kontrollfunktioner att inmatat data uppfyller vissa kriterier ej tillagda.
